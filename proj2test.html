@@ -32,10 +32,10 @@
 
 			map = new OpenLayers.Map('map', {
 				projection: "EPSG:2263",
-				units: "ft",
-				maxResolution: 250000,
+				center: new OpenLayers.LonLat(-73.9,40.7),
+				zoom: 10,
 				maxExtent: new OpenLayers.Bounds(
-					913154.843600, 120114.582600, 1067382.510900, 272932.046000
+					-80, 40, -70, 45
 				)
 			});
 
