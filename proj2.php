@@ -25,7 +25,8 @@ $new_style-> outlinecolor->setRGB(255, 0, 0);
 
 $new_layer->setConnectionType(MS_POSTGIS);
 $new_layer->set("connection","user=username password=password dbname=d408 host=192.168.88.30");
-$data="geom from (select gid, geom, county, name, (SELECT SUM(cases) FROM covid cov WHERE cov.county = name and cov.state = 'New York') as cases, (SELECT SUM(deaths) FROM covid cov WHERE cov.county = name and cov.state = 'New York') as deaths from county) as foo using unique gid using SRID=2263";
+
+$data="geom from (select gid, geom, county, name, (SELECT cases FROM covid cov WHERE cov.county = name and cov.state = 'New York' and case_date='2020-04-15') as cases, (SELECT deaths FROM covid cov WHERE cov.county = name and cov.state = 'New York' and case_date='2020-04-15') as deaths from county) as foo using unique gid using SRID=2263";
 $new_layer->set("data",$data) ;
 
 $oMap->owsdispatch($request);
